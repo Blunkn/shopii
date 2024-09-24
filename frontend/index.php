@@ -9,8 +9,9 @@ include "./sql_con.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Websafe shop</title>
+    <title>Shopii</title>
     <link rel="stylesheet" type="text/css" href="./design.css">
+    <link rel="stylesheet" type="text/css" href="./homepage.css">
 </head>
 
 <body>
@@ -30,7 +31,7 @@ include "./sql_con.php";
             $query->store_result();
 
             while ($query->fetch()) {
-                echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h2>' . $name . '</h2><p>$' . $price . '</p><br>';
+                echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
 
                 if (isset($_SESSION["user_id"]) && $_SESSION["privilege"] == "user") {
                     echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
@@ -62,7 +63,7 @@ include "./sql_con.php";
                         $picture = $row['picture'];
                         $description = $row['description'];
 
-                        echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h2>' . $name . '</h2><p>$' . $price . '</p><br>';
+                        echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
 
                         if (isset($_SESSION["user_id"])) {
                             echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
@@ -89,7 +90,7 @@ include "./sql_con.php";
         <div class="modal-content">
             <span class="close">&times;</span>
             <div class="product-details">
-                <h2 id="product-name"></h2>
+                <h3 id="product-name"></h3><hr>
                 <div class="product-image">
                     <img id="product-image" alt="Product Image">
                 </div>
@@ -119,7 +120,7 @@ include "./sql_con.php";
         for (var i = 0; i < cells.length; i++) {
             cells[i].addEventListener("click", function() {
                 // Get the product details from the clicked cell
-                var productName = this.querySelector("h2").textContent;
+                var productName = this.querySelector("h3").textContent;
                 var productImage = this.querySelector("img").src;
                 var productDescription = this.querySelector(".product-details p").textContent;
                 var productPrice = this.querySelector("p").textContent;
