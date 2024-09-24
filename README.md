@@ -2,7 +2,9 @@
 ---
 
 A glorified CTF box simulating a vulnerable shopping website.
+
 Group project for Singapore Institute of Technology's ICT2212 - Ethical Hacking module.
+
 Special thanks to jason_kool for advice and permission to model our box off his Websafe repository.
 
 ## Version 1.0
@@ -26,31 +28,53 @@ A folder containing the public-facing website. Nothing on this yet.
 5. To start, run `docker-compose up -d`.
 6. To close, run `docker-compose down`.
 
+## Flags
+---
+Flag 1: SQL Injection & Cryptography
+
+Requires a basic understanding of SQL injection attacks and cryptography.
+
+The name of an alcoholic drink combo has been hidden inside the SQL database.
+
 ## Login Credentials
 ---
 For frontend website:
+
 Username: admin1
+
 Email: admin@shopii.com
+
 Password: PETERrulez1!
 
+
 For backend database:
+
 Root username: root
+
 Root password: d@gg3R
+
 Username: admin2
+
 Password: id0ntkn0w
 
 ## Network Map
 ---
 Network address: 192.168.1.0/24
+
 Website address: 192.168.1.10
 
 ## Port Map
 ---
 Website: 127.0.0.1:8000
+
 PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.1 - Tweaks & Additions
+- Added index.php main page and accompanying design.css to frontend folder.
+- Hardened shopii_db.sql to contain hashed passwords instead. Added 1st flag.
+
 v1.0 - Initial commit
 - Added db folder and init_scripts subfolder. Added account.sql and shopii_db.sql scripts.
 - Added empty frontend folder.
