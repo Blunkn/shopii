@@ -59,9 +59,9 @@ Password: id0ntkn0w
 
 ## Network Map
 ---
-Network address: 192.168.1.0/24
+Network address: 192.168.123.0/24
 
-Website address: 192.168.1.10
+Website address: 192.168.123.11
 
 ## Port Map
 ---
@@ -71,6 +71,12 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.2 - First Deployment
+- Changed network address to 192.168.123.0/24.
+- Fixed sql_con.php to point towards new address.
+- Fixed shopii_db.sql to properly set up database. It was setting up as shopii instead.
+- Added volumes sections to compose.yaml to properly mount scripts.
+
 v1.1 - Tweaks & Additions
 - Added index.php main page and accompanying design.css to frontend folder.
 - Hardened shopii_db.sql to contain hashed passwords instead. Added 1st flag.

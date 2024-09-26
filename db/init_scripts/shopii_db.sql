@@ -6,8 +6,8 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+08:00";
 
-CREATE DATABASE IF NOT EXISTS `shopii` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `shopii`;
+CREATE DATABASE IF NOT EXISTS `shopii_db` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `shopii_db`;
 
 -- create products table
 CREATE TABLE `products` (

@@ -5,7 +5,7 @@ networks: # setup network
     ipam:
       driver: default
       config:
-        - subnet: "192.168.1.0/24"
+        - subnet: "192.168.123.0/24"
 
 services: # setup containers
 
@@ -13,24 +13,29 @@ services: # setup containers
     build:
       context: . # draws from a directory or repo URL
       dockerfile: image/dockerfile # relative filepath to a dir containing the dockerfile
+    volumes:
+      - ./frontend:/var/www/html
     ports:
       - "8000:80" # <host port>:<container port>
     depends_on:
       - database # will wait for this to start before starting
     networks:
       internal:
-        ipv4_addr: "192.168.1.10"
+        ipv4_address: "192.168.123.11"
 
   database: # container name
     image: mysql:latest # just draw from the official container of mysql
+    volumes:
+      - ./db/init_scripts:/docker-entrypoint-initdb.d/ #this points to db directory
     environment: # env variables
-      - MYSQL-DATABASE=shopii_db
+      - MYSQL_DATABASE=shopii_db
       - MYSQL_ROOT_PASSWORD=d@gg3R
       - MYSQL_USER=admin2
       - MYSQL_PASSWORD=id0ntkn0w
     restart: unless-stopped
     networks:
-      - internal # this is the name for the internal network
+       internal: # this is the name for the internal network
+        ipv4_address: "192.168.123.10"
 
   phpmyadmin: # debugging interface name
     image: phpmyadmin # draws from the official container of phpmyadmin
@@ -38,8 +43,8 @@ services: # setup containers
       - "8001:80" # <host port>:<container port>
     environment: # env vars
       - ARBITRARY=1
-      - HOST=database
-      - PORT=3306
+      - PMA_HOST=database
+      - PMA_PORT=3306 # DO NOT REMOVE PMA RETARD
     networks:
       - internal
 
