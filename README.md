@@ -34,7 +34,13 @@ Flag 1: SQL Injection & Cryptography
 
 Requires a basic understanding of SQL injection attacks and cryptography.
 
-The name of an alcoholic drink combo has been hidden inside the SQL database.
+Caesar encodes 64 bases, nine at dawn; a synonym to a lack of noise.
+
+Flag 2: Malicious File Upload
+
+Requires a basic understanding of malicious file upload attacks and cryptography.
+
+Vigenere speaks, with haught; a highly resilient rock.
 
 ## Login Credentials
 ---
@@ -71,6 +77,12 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.3 - Polishing Up Functionalities
+- Added profile system.
+- Added images for store products.
+- Revamped flag system. Added flag 2.
+! As of writing, this version is untested. I could not get my VM to work without freezing every 5 minutes.
+
 v1.2 - First Deployment
 - Changed network address to 192.168.123.0/24.
 - Fixed sql_con.php to point towards new address.
