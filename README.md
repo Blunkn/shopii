@@ -77,10 +77,16 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.4 - Impromptu Fixes
+- Fixed register directory by renaming it. Other .php pages were pointing elsewhere.
+- Added init-error.php and init-timeout.php. Some pages wouldn't load properly without them due to "include" statements.
+- Fixed values mismatch in shopii_db.sql's Users table.
+
 v1.3 - Polishing Up Functionalities
 - Added profile system.
 - Added images for store products.
 - Revamped flag system. Added flag 2.
+
 ! As of writing, this version is untested. I could not get my VM to work without freezing every 5 minutes.
 
 v1.2 - First Deployment
