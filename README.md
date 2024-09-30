@@ -30,17 +30,25 @@ A folder containing the public-facing website. Nothing on this yet.
 
 ## Flags
 ---
-Flag 1: SQL Injection & Cryptography
+! All flags are encrypted with 1 or 2 layers of ciphers.
 
-Requires a basic understanding of SQL injection attacks and cryptography.
+Flag 1: SQL Injection
+
+Requires a basic understanding of SQL injection attacks.
 
 Caesar encodes 64 bases, nine at dawn; a synonym to a lack of noise.
 
 Flag 2: Malicious File Upload
 
-Requires a basic understanding of malicious file upload attacks and cryptography.
+Requires a basic understanding of malicious file upload attacks and post-exploitation techniques.
 
 Vigenere speaks, with haught; a highly resilient rock.
+
+Flag 3: Inclusion of Information in Comments
+
+Requires very basic web page inspection skills.
+
+Someone left a low hanging fruit during development.
 
 ## Login Credentials
 ---
@@ -77,6 +85,13 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.5 - More Fixes + EC2 Transfer
+- Fixed login buttons redirecting to nowhere.
+- Fixed shopii_db.sql setup not setting audit_trail's id as an autoincrementing primary key.
+- Fixed issues with some pages saying "profilepicture" while others say "profilepic".
+- Fixed flag 2.
+- Added flag 3.
+
 v1.4 - Impromptu Fixes
 - Fixed register directory by renaming it. Other .php pages were pointing elsewhere.
 - Added init-error.php and init-timeout.php. Some pages wouldn't load properly without them due to "include" statements.

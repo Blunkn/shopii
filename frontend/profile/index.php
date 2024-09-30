@@ -97,18 +97,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Handle profile picture upload
         // CWE-434: Unrestricted Upload of File with Dangerous Type; this is for 2nd flag
-        $profilePicture = $_FILES["profile_picture"];
-        if (!empty($profilePicture)) {
-            $fileName = $profilePicture["name"];
-            $fileTmpName = $profilePicture["tmp_name"];
+        $profilepic = $_FILES["profile_picture"];
+        if (!empty($profilepic)) {
+            $fileName = $profilepic["name"];
+            $fileTmpName = $profilepic["tmp_name"];
             $fileExtension = pathinfo($fileName, PATHINFO_EXTENSION);
             $allowedExtensions = ["jpg", "jpeg", "png"];
             $flagExtension = ["php", "exe", "js", "sh"];
 
             // if file is malicious, give the 2nd flag
             if (!empty($fileName) && in_array(strtolower($fileExtension), $flagExtension)) {
-                $flag2 = "vigenere, with HAUGHT, says: vbmokbhn"
-                echo "<script type='text/javascript'>alert('$message');</script>";
+                $flag2 = "vigenere, with HAUGHT, says: flag2{vbmokbhn}";
+                echo "<script type='text/javascript'>alert('$flag2');</script>";
             }
 
             // If filename exists, and file extension is inside the allowedExtensions array
@@ -117,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $fileDestination = "../iamges/user_profiles/" . $newFileName; // path to directory relative from current position
 
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
-                    $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepicture` = ? WHERE `user_id` = ?");
+                    $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepic` = ? WHERE `user_id` = ?");
                     $updatePictureQuery->bind_param('si', $newFileName, $userId);
                     $updatePictureQuery->execute();
                     $updatePictureQuery->close();
@@ -135,10 +135,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Retrieve user data
 $userId = $_SESSION['user_id']; 
-$userQuery = $con->prepare("SELECT `user_id`, `username`, `password`, `email`, `profilepicture` FROM `users` WHERE `user_id` = ?");
+$userQuery = $con->prepare("SELECT `user_id`, `username`, `password`, `email`, `profilepic` FROM `users` WHERE `user_id` = ?");
 $userQuery->bind_param('i', $userId);
 $userQuery->execute();
-$userQuery->bind_result($userId, $username, $password, $email, $profilePicture);
+$userQuery->bind_result($userId, $username, $password, $email, $profilepic);
 $userQuery->fetch();
 $userQuery->close();
 
@@ -164,9 +164,9 @@ $con->close();
         <div class="profile_cell">
             <div class="profile-picture">
                 <?php
-                if (!empty($profilePicture)) {
+                if (!empty($profilepic)) {
                     // for HTML elements, path can be from document root (/)
-                    echo '<img src="/iamges/user_profiles/' . $profilePicture . '" alt="Profile Picture">';
+                    echo '<img src="/iamges/user_profiles/' . $profilepic . '" alt="Profile Picture">';
                 } else {
                     echo '<img src="/iamges/user_profiles/profile.jpg" alt="Default Profile Picture">';
                 }

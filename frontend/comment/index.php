@@ -27,7 +27,7 @@ session_start();
     
     include "../sql_con.php";
 
-    $query = $con->prepare('SELECT `c`.*, `u`.`username`, `u`.`profilepicture` FROM `users` u INNER JOIN `comments` c ON `c`.`user_id` = `u`.`user_id` ORDER BY c.comment_id DESC;');
+    $query = $con->prepare('SELECT `c`.*, `u`.`username`, `u`.`profilepic` FROM `users` u INNER JOIN `comments` c ON `c`.`user_id` = `u`.`user_id` ORDER BY c.comment_id DESC;');
 
     if ($query->execute()) {
 

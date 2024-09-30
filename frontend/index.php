@@ -174,4 +174,6 @@ include "./sql_con.php";
 
 </body>
 
+
+<!-- remember: the combi for the safe at office level 3 is 23 1 18 4 5 14-->
 </html>

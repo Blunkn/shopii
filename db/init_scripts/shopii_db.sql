@@ -11,11 +11,12 @@ USE `shopii_db`;
 
 -- create audit table
 CREATE TABLE `audit_trail` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `audit_username` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `audit_role` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `audit_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `audit_activity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `audit_activity` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -54,7 +55,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `profilepic`, `privilege`) VALUES
 (1, "gaydenchio", "gaydenchio@gmail.com", "$2a$10$4N.kHs/YG8FNRw1lPZQXqecnFSqdaFIRDwXNEMlr9IAIs7zWh0EDO", '', 'user'),
 (2, 'takato_3244278', 'takato@cybermail.jp', '$2a$10$DMY8htvvNlc3LmNuag.Z2e7Nq8mxJFO1VyXQbePpk6qwPlwzXTQpG', '', 'user'),
-(3, 'kasm79', 'kasm@proton.me', 'ZnZ5cmFn', '', 'user'),
+(3, 'kasm79', 'kasm@proton.me', 'flag1{ZnZ5cmFn}', '', 'user'),
 (4, 'admin1', 'admin@shopii.com', '$2a$10$rRUUL9SWReuH0Cq3pi97EeLDVweAxv4tU0yyc07EcmP.lJx0.4Uoa', '', 'admin');
 
 -- -----

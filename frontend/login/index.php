@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $con->close();
                 // echo "Audit log has been captured";
                 // Redirect to the homepage or any other authenticated page
-                echo "<script>window.location.href='/'</script>";
+                echo "<script>window.location.href='/index.php'</script>";
             }
         } else {
             $error = "Invalid username or password.";

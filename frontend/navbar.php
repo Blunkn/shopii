@@ -7,7 +7,7 @@
         ini_set('display_errors', 0);
         if (!isset($_SESSION["privilege"])) {
             // user not logged in
-            echo '<a href="./login/login.php"><button class="navbarbutton">Log in</button></a>';
+            echo '<a href="./login/index.php"><button class="navbarbutton">Log in</button></a>';
         } else {
             // user is logged in
             echo '<a href="/logout"><button class="navbarbutton">Log out</button></a>';
