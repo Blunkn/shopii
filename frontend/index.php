@@ -18,73 +18,77 @@ include "./sql_con.php";
 
     <?php include "./navbar.php"; ?>
 
-    <?php
+    <img class="banner" src="./images/shop_banner.jpg" alt="Shopping Advertisement Banner">
+    <section class="product-container">
+        <h1>Featured Products</h1><hr>
+        <?php
 
-    function getAllProducts()
-    {
-        global $con;
-        $query = $con->prepare("SELECT * FROM `products`");
-        // SELECT everything FROM a table called `products`
+        function getAllProducts()
+        {
+            global $con;
+            $query = $con->prepare("SELECT * FROM `products`");
+            // SELECT everything FROM a table called `products`
 
-        if ($query->execute()) {
-            $query->bind_result($product_id, $name, $price, $picture, $description);
-            $query->store_result();
+            if ($query->execute()) {
+                $query->bind_result($product_id, $name, $price, $picture, $description);
+                $query->store_result();
 
-            while ($query->fetch()) {
-                echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
+                while ($query->fetch()) {
+                    echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
 
-                if (isset($_SESSION["user_id"]) && $_SESSION["privilege"] == "user") {
-                    echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
-                }
-
-                echo '</div></div></div></div>';
-            }
-        } else {
-            echo "Error executing query.";
-        }
-    }
-
-
-    try {
-        if (isset($_POST["search_query"])) {
-            if ($_POST["search_query"] == null) {
-                getAllProducts();
-            } else {
-                $search_query = $_POST["search_query"];
-                // CWE-89: Improper Neutralization of Special Elements used in an SQL Command
-                $query = "SELECT * FROM `products` WHERE `name` LIKE '%$search_query%'";
-                $result = mysqli_query($con, $query);
-
-                if ($result) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $product_id = $row['product_id'];
-                        $name = $row['name'];
-                        $price = $row['price'];
-                        $picture = $row['picture'];
-                        $description = $row['description'];
-
-                        echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
-
-                        if (isset($_SESSION["user_id"])) {
-                            echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
-                        }
-
-                        echo '</div></div></div></div>';
+                    if (isset($_SESSION["user_id"]) && $_SESSION["privilege"] == "user") {
+                        echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
                     }
-                } else {
-                    echo "Error executing query.";
+
+                    echo '</div></div></div></div>';
                 }
+            } else {
+                echo "Error executing query.";
             }
-        } else {
-            throw new Exception("No searches made");
         }
-    } catch (\Throwable $th) {
-        //throw $th;
-        getAllProducts();
-    }
 
 
-    ?>
+        try {
+            if (isset($_POST["search_query"])) {
+                if ($_POST["search_query"] == null) {
+                    getAllProducts();
+                } else {
+                    $search_query = $_POST["search_query"];
+                    // CWE-89: Improper Neutralization of Special Elements used in an SQL Command
+                    $query = "SELECT * FROM `products` WHERE `name` LIKE '%$search_query%'";
+                    $result = mysqli_query($con, $query);
+
+                    if ($result) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $product_id = $row['product_id'];
+                            $name = $row['name'];
+                            $price = $row['price'];
+                            $picture = $row['picture'];
+                            $description = $row['description'];
+
+                            echo '<div class="cell" data-product-id="' . $product_id . '"  data-description="' . $description . '"><div class="product"><img src="./productimages/' . $picture . '" alt="Image of ' . $name . '"><div class="product-details"><h3>' . $name . '</h3><p>$' . $price . '</p><br>';
+
+                            if (isset($_SESSION["user_id"])) {
+                                echo '<a href="/cart/addtoCart.php?product_id=' . $product_id . '" class="cell-btn">Add to cart</a>';
+                            }
+
+                            echo '</div></div></div></div>';
+                        }
+                    } else {
+                        echo "Error executing query.";
+                    }
+                }
+            } else {
+                throw new Exception("No searches made");
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            getAllProducts();
+        }
+
+
+        ?>
+    </section>
 
     <div id="myModal" class="modal">
         <div class="modal-content">

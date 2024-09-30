@@ -108,14 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<p class="error">' . $error . '</p>';
             }
             ?>
-        </div>
 
-        <!-- THIS LEADS TO THE INSECURE VERSION OF BOTH -->
-        <div class="forgor">
-            <span>Not Registered? <a href="/register">Register Here</a></span>
-            <span><a href="/login/reset">Forgot Password?</a></span>
+            <div class="forgor">
+                <span>Not Registered? <a href="/register">Register Here</a></span>
+                <span><a href="/login/resetpw">Forgot Password?</a></span>
+            </div>
         </div>
-
     </div>
 </body>
 

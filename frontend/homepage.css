@@ -1,16 +1,25 @@
+
 /* ===== MAIN PAGE ===== */
+.banner {
+    width: 100%;
+    object-fit: fill;
+}
+
+.product-container {
+    padding: 1%;
+}
+
 .cell {
     border: solid 2px rgb(189, 189, 189);
     display: flex;
     color: black;
     background: rgb(237, 237, 237);
     width: 20vw;
+    min-width: 200px;
+    max-width: 350px;
     transition: 0.3s;
     float: left;
-    margin-top: 1%;
-    margin-right: 1%;
-    margin-left: 1%;
-    margin-bottom: 1%;
+    margin: 1%;
     overflow: hidden;
 }
 
@@ -134,4 +143,4 @@
 
 .modal-content .add-to-cart-btn:hover {
     background-color: #26df35; 
-} 
+}

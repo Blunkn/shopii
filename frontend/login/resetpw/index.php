@@ -68,10 +68,10 @@ $con->close();
                     echo '<p class="error">' . $error . '</p>';
                 }
             ?>
-        </div>
 
-        <div class="forgor">
-            <span>Remember your password? <a href="/login">Login Here</a></span>
+            <div class="forgor">
+                <span>Remember your password? <a href="/login">Login Here</a></span>
+            </div>
         </div>
     </div>
 

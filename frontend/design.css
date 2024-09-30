@@ -12,7 +12,8 @@ body {
     display: flexbox;
     align-items: center;
     justify-content: space-between;
-    background-color: #3E4491;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.512);
+    background-color: #292A73;
     text-align: left;
     padding-bottom: 1em; 
     padding-top: 1em; 
@@ -62,8 +63,13 @@ body {
     background-color: azure;
     margin-left: 2px;
     float: right;
+    width: 10%;
+    transition: 0.3s;
+}
+
+#navbar_search:focus {
     width: 30%;
-    font-size: 2vw; /* This affects the font size, which inderectly fixes the height as well*/
+    transition: 0.3s;
 }
 
 #navbar_search_button {
@@ -109,11 +115,153 @@ body {
 button, .button, select {
     border-radius: 20px;
     padding: 6px;
-    font-size: 2vw;
     background-color: #D8E1E7;
     transition: 0.2s linear;
 }
 
 button:hover, .button:hover {
     background-color: #9BA1A5;
+}
+
+
+/* ===== LOGIN AND REGISTER ===== */
+.profile-picture img {
+    padding-left: 15%;
+    width: 150px; /* Adjust the desired width */
+    height: auto;
+}
+
+.profile_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 30vh;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_card {
+	color: white;
+    margin-top: 5em;
+    height: fit-content;
+    width: fit-content;
+    background-color: #3E4491;
+    padding: 2em 4em 2em 4em;
+    border-radius: 1vw;
+}
+
+.login_card h1 {
+	text-align: center;
+}
+
+.login_card input {
+    border: none;
+    border-radius: 1em;
+    padding: 0.5em;
+    background-color: azure;
+    margin: 0 auto 0 auto;
+    margin-bottom: 5%;
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.login_card .button {
+    width: 60%;
+}
+
+.success {
+    color: red;
+}
+
+.error {
+    text-align: right;
+    color:red;
+}
+
+.forgor {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.forgor a {
+    color: #F7A400
+}
+
+
+/* ===== COMMENTS PAGE ===== */
+
+.commentscontainer {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1% 0;
+    margin-bottom: 2%;
+}
+
+.commentscontainer form {
+    display: contents
+}
+
+textarea {
+    width: 35vw;
+    margin: 1%;
+    resize: none;
+}
+
+.comment_cell {
+    width: 65%;
+    height: fit-content;
+    color: white;
+    background-color: #292A73;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.comment_cell_left {
+    width: 20%;
+    margin: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.comment_cell_left > img {
+    display: block;
+    height: 20vh;
+    width: auto;
+}
+
+.comment_cell_right {
+    width: 80%;
+    margin: 1%;
+    word-wrap: break-word;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.comment_cell_right p {
+    min-width: 100%;
+}
+
+.date_posted {
+    margin-left: auto;
+    margin-top: auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+.date_posted a {
+    color: red;
+    margin-right: 20px;
 }

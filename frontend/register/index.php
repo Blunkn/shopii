@@ -102,10 +102,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo '<p class="error">' . $error . '</p>';
             }
             ?>
-        </div>
 
-        <div class="forgor">
-            <span>Have an account? <a href="/login">Login Here</a></span>
+            <div class="forgor">
+                <span>Have an account? <a href="/login">Login Here</a></span>
+            </div>
         </div>
     </div>
 
