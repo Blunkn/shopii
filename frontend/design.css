@@ -1,9 +1,10 @@
 
 
 body {
-    background-color: lightgray;
+    background-color: darkslategray;
     margin: 0%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
 }
 
 #navbar {
@@ -13,7 +14,7 @@ body {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid rgba(211, 211, 211, 0.512);
-    background-color: #292A73;
+    background-color: cadetblue;
     text-align: left;
     padding-bottom: 1em; 
     padding-top: 1em; 
@@ -58,6 +59,8 @@ body {
     border: none;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     padding: 6px;
     padding-left: 15px;
     background-color: azure;

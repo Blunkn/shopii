@@ -85,6 +85,10 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.6 - CSS Fixes + Domain Hosting
+- Bought 1 year subscription to shopii.lol as a domain. Should've used .gay, it'll be funnier.
+- Made minor changes to CSS stylesheet. Will test later.
+
 v1.5 - More Fixes + EC2 Transfer
 - Fixed login buttons redirecting to nowhere.
 - Fixed shopii_db.sql setup not setting audit_trail's id as an autoincrementing primary key.
