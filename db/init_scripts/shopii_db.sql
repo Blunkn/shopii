@@ -56,7 +56,7 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `profilepic`, `
 (1, "gaydenchio", "gaydenchio@gmail.com", "e3d64e6d4868aa11d146e5bcc2f088a4", '', 'user'),
 (2, 'takato_3244278', 'takato@cybermail.jp', 'ce877ce2c2faa3f04743ffecdbbc1941', '', 'user'),
 (3, 'kasm79', 'kasm@proton.me', 'flag1{ZnZ5cmFn}', '', 'user'),
-(4, 'admin1', 'admin@shopii.com', '6046b52a0271ecdb9133d928e31ff5d6', '', 'admin');
+(4, 'admin1', 'admin@shopii.com', '6f5393979d674de36c433b47b7d8908e', '', 'admin');
 
 -- -----
 
