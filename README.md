@@ -85,6 +85,10 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.6.5 - More Ad-Hoc Tweaks
+- Used weaker hashes for user passwords. Attacker can crack their passwords as a side quest.
+! Changed host ports to 80 and 81 respectively for now. Subsequent updates will revert this port mapping back.
+
 v1.6 - CSS Fixes + Domain Hosting
 - Bought 1 year subscription to shopii.lol as a domain. Should've used .gay, it'll be funnier.
 - Made minor changes to CSS stylesheet. Will test later.

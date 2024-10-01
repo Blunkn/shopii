@@ -16,7 +16,7 @@ services: # setup containers
     volumes:
       - ./frontend:/var/www/html
     ports:
-      - "8000:80" # <host port>:<container port>
+      - "80:80" # <host port>:<container port>
     depends_on:
       - database # will wait for this to start before starting
     networks:
@@ -40,7 +40,7 @@ services: # setup containers
   phpmyadmin: # debugging interface name
     image: phpmyadmin # draws from the official container of phpmyadmin
     ports:
-      - "8001:80" # <host port>:<container port>
+      - "81:80" # <host port>:<container port>
     environment: # env vars
       - ARBITRARY=1
       - PMA_HOST=database
