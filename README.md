@@ -85,6 +85,10 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.7 - Repaired Password Authentication system
+- Changed the password hashing algorithm in `/frontend/login/index.php` and `/frontend/register/index.php` to MD5.
+- Changed the website Admin Password.
+
 v1.6.5 - More Ad-Hoc Tweaks
 - Used weaker hashes for user passwords. Attacker can crack their passwords as a side quest.
 ! Changed host ports to 80 and 81 respectively for now. Subsequent updates will revert this port mapping back.
