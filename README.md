@@ -87,7 +87,10 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 ---
 v1.7 - Repaired Password Authentication system
 - Changed the password hashing algorithm in `/frontend/login/index.php` and `/frontend/register/index.php` to MD5.
+- Changed password hashing algorithm and repaired file upload functionality in `/frontend/profile/index.php`
+- Created new folder, `/images/user_profiles/` to store uploaded profile pictures.
 - Changed the website Admin Password.
+- Altered the Dockerfile to make running user `www-user`
 
 v1.6.5 - More Ad-Hoc Tweaks
 - Used weaker hashes for user passwords. Attacker can crack their passwords as a side quest.
