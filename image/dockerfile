@@ -1,11 +1,20 @@
 FROM php:8.2.4-apache
 
-# update system + install mysqli
-RUN apt update
+# update system + install tools
+RUN apt-get update && apt-get install -y \
+    sudo \
+    net-tools \
+    iputils-ping \
+    traceroute \
+    netcat
+
+# set root + set password for it
+RUN echo "root:silentobsidianwarden" | chpasswd && \
+    echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# install mysqli
 RUN docker-php-ext-install mysqli pdo_mysql
 RUN docker-php-ext-enable mysqli
-
-# this is the blueprint for the containers
 
 RUN chown -R www-data:www-data /var/www
 USER www-data
