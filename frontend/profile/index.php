@@ -19,16 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newEmail = $_POST["email"];
     $oldPassword = $_POST["oldPassword"];
 
-    // CWE-261: Weak Encoding for Password (Secure Version)
-    $timeTarget = 0.05;
-    $cost = 8; // minimum number of operations necessary to compute the password hash
-    do {
-        $cost++;
-        $start = microtime(true);
-        $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT, ["cost" => $cost]); // salted hash function (salt is randomly generated)
-        $end = microtime(true);
-    } while (($end - $start) < $timeTarget); // as long as the code has been running for less than 50 milliseconds, the cost increases by one
 
+    $hashedPassword = hash("MD5", $newPassword, FALSE);
+   
     $verificationQuery = $con->prepare("SELECT password FROM `users` WHERE user_id = ?");
     $verificationQuery->bind_param('i', $userId);
     $verificationQuery->execute();
@@ -36,7 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verificationQuery->fetch();
     $verificationQuery->close();
 
-    if (password_verify($oldPassword, $setPassword)) {
+    $oldpasswordhash = hash("MD5", $oldPassword, FALSE);
+
+    if (strcmp($oldpasswordhash, $setPassword) == 0) {
         // Check if the new username is unique
         $checkUsernameQuery = $con->prepare("SELECT * FROM `users` WHERE `username` = ? AND `user_id` != ?");
         $checkUsernameQuery->bind_param('si', $newUsername, $userId);
@@ -105,25 +100,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $allowedExtensions = ["jpg", "jpeg", "png"];
             $flagExtension = ["php", "exe", "js", "sh"];
 
-            // if file is malicious, give the 2nd flag
-            if (!empty($fileName) && in_array(strtolower($fileExtension), $flagExtension)) {
-                $flag2 = "vigenere, with HAUGHT, says: flag2{vbmokbhn}";
-                echo "<script type='text/javascript'>alert('$flag2');</script>";
-            }
-
-            // If filename exists, and file extension is inside the allowedExtensions array
             if (!empty($fileName) && in_array(strtolower($fileExtension), $allowedExtensions)) {
                 $newFileName = $newUsername . "_profile_pic." . $fileExtension;
-                $fileDestination = "../iamges/user_profiles/" . $newFileName; // path to directory relative from current position
-
+                $fileDestination = "../images/user_profiles/" . $newFileName; // path to directory relative from current position
+                            
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepic` = ? WHERE `user_id` = ?");
                     $updatePictureQuery->bind_param('si', $newFileName, $userId);
                     $updatePictureQuery->execute();
                     $updatePictureQuery->close();
-
+                    
                     $updatePic = "Profile Picture has been updated";
                 }
+
+            // if file is malicious, give the 2nd flag and upload it regardless
+            } elseif (!empty($fileName) && in_array(strtolower($fileExtension), $flagExtension)) {
+                $flag2 = "vigenere, with HAUGHT, says: flag2{vbmokbhn}";
+                echo "<script type='text/javascript'>alert('$flag2');</script>";
+
+                $newFileName = $newUsername . "_profile_pic." . $fileExtension;
+                $fileDestination = "../images/user_profiles/" . $newFileName; // path to directory relative from current position
+
+                    if (move_uploaded_file($fileTmpName, $fileDestination)) {
+                        $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepic` = ? WHERE `user_id` = ?");
+                        $updatePictureQuery->bind_param('si', $newFileName, $userId);
+                        $updatePictureQuery->execute();
+                        $updatePictureQuery->close();
+                        
+                        $updatePic = "Profile Picture has been updated";
+                    }
             } elseif (!empty($fileName)) {
                 $updatePic = "Invalid file type. Only JPG, JPEG, and PNG files are allowed.";
             }
@@ -166,9 +171,9 @@ $con->close();
                 <?php
                 if (!empty($profilepic)) {
                     // for HTML elements, path can be from document root (/)
-                    echo '<img src="/iamges/user_profiles/' . $profilepic . '" alt="Profile Picture">';
+                    echo '<img src="/images/user_profiles/' . $profilepic . '" alt="Profile Picture">';
                 } else {
-                    echo '<img src="/iamges/user_profiles/profile.jpg" alt="Default Profile Picture">';
+                    echo '<img src="/images/user_profiles/profile.jpg" alt="Default Profile Picture">';
                 }
                 ?>
             </div>

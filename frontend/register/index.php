@@ -19,15 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passwordCheck = preg_match('/^(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $password);
     $emailCheck = preg_match('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/', $email);
 
-    // CWE-261: Weak Encoding for Password (Secure Version)
-    $timeTarget = 0.05;
-    $cost = 8; // minimum number of operations necessary to compute the password hash
-    do {
-        $cost++;
-        $start = microtime(true);
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT, ["cost" => $cost]); // salted hash function (salt is randomly generated)
-        $end = microtime(true);
-    } while (($end - $start) < $timeTarget); // as long as the code has been running for less than 50 milliseconds, the cost increases by one
+    $hashedPassword = hash("md5", $password, FALSE);
+
     if ($usernameCheck) {
         if ($passwordCheck) {
             if ($emailCheck) {

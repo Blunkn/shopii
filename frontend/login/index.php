@@ -8,14 +8,15 @@ $error = ""; // Variable to store the error message
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = hash("MD5", $_POST["password"], FALSE);
     $query = $con->prepare("SELECT * FROM `users` WHERE `username` = ?");
     $query->bind_param('s', $username);
     
     if ($query->execute()) {
         $result = $query->get_result();
         $user = $result->fetch_assoc();
-        if (password_verify($password, $user["password"])) {
+        
+        if (strcmp($password, $user["password"]) == 0) {
 
             //CWE-312 secure
             $ciphering = "AES-256-GCM";
