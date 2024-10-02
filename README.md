@@ -94,6 +94,11 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.8 - Finalising Functionalities
+- Setup sudo & corresponding password for the Docker container instead of the host lol
+- Installed other binaries on the web app that a hypothetical attacker may need for post-exploitation activities.
+- Added the final flag. Includes a note and something special.
+
 v1.7 - Repaired Password Authentication system
 - Changed the password hashing algorithm in `/frontend/login/index.php` and `/frontend/register/index.php` to MD5.
 - Changed password hashing algorithm and repaired file upload functionality in `/frontend/profile/index.php`
