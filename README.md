@@ -7,17 +7,20 @@ Group project for Singapore Institute of Technology's ICT2212 - Ethical Hacking 
 
 Special thanks to jason_kool for advice and permission to model our box off his Websafe repository.
 
-## Version 1.0
+## Version 1.8
 ---
 The Shopii Web App uses Docker and a .yaml script to deploy 3 containers; a backend database, a debugging interface, and a frontend web server.
 
 ### db
 The database. Has scripts the .yaml script will use to set up databases for its respective container.
 
-A folder containing multiple .php files essential for administrative use. Has features to add and remove user accounts as well as toggle privileges for them.
-
 ### frontend
-A folder containing the public-facing website. Nothing on this yet.
+A folder containing the public-facing website.
+
+Contains subfolders:
+- Comment: commenting system.
+- Images: contains various visual assets of the website.
+- Login/Logout/Register: profile system.
 
 ## Installation
 ---
@@ -49,6 +52,12 @@ Flag 3: Inclusion of Information in Comments
 Requires very basic web page inspection skills.
 
 Someone left a low hanging fruit during development.
+
+Final Flag: Post-Exploitation
+
+Requires all previous flags, as well as the methodology behind one of the flags, to achieve.
+
+Something was hidden in the root directory. Break in and get it.
 
 ## Login Credentials
 ---
