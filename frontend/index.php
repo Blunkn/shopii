@@ -11,7 +11,7 @@ include "./sql_con.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopii</title>
     <link rel="stylesheet" type="text/css" href="./design.css">
-    <!-- link rel="stylesheet" type="text/css" href="./homepage.css" -->
+    <link rel="stylesheet" type="text/css" href="./homepage.css">
 </head>
 
 <body>

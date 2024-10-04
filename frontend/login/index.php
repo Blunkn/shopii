@@ -111,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ?>
 
             <div class="forgor">
-                <span>Not Registered? <a href="/register">Register Here</a></span>
+                <span>Not Registered? <a href="/register">Register Here</a></span><br />
                 <span><a href="/login/resetpw">Forgot Password?</a></span>
             </div>
         </div>
