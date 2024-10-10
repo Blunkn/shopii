@@ -1,6 +1,7 @@
 
 
 body {
+    color: white;
     background-color: darkslategray;
     margin: 0%;
     font-family: 'Courier New', monospace;
@@ -10,9 +11,6 @@ body {
 #navbar {
     min-width: 100%;
     min-height: 10%;
-    display: flexbox;
-    align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid rgba(211, 211, 211, 0.512);
     background-color: cadetblue;
     text-align: left;
@@ -59,8 +57,6 @@ body {
     border: none;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
     padding: 6px;
     padding-left: 15px;
     background-color: azure;
@@ -128,21 +124,6 @@ button:hover, .button:hover {
 
 
 /* ===== LOGIN AND REGISTER ===== */
-.profile-picture img {
-    padding-left: 15%;
-    width: 150px; /* Adjust the desired width */
-    height: auto;
-}
-
-.profile_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 40vw;
-    height: 30vh;
-}
-
 .container {
     display: flex;
     align-items: center;
@@ -202,46 +183,67 @@ button:hover, .button:hover {
 
 /* ===== COMMENTS PAGE ===== */
 
-.commentscontainer {
+.message-wall-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.feedback-cell {
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1% 0;
-    margin-bottom: 2%;
+    padding: 1em;
+    margin: 0 2% 2% 0;
+    overflow: hidden;
+    width: 70%;
 }
 
-.commentscontainer form {
-    display: contents
+.feedback-cell > form {
+    display: contents;
+}
+
+.feedback-cell > form > input {
+    margin-top: 1em;
+    border: none;
 }
 
 textarea {
-    width: 35vw;
+    width: 100%;
     margin: 1%;
     resize: none;
 }
 
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .comment_cell {
-    width: 65%;
+    width: 100%;
     height: fit-content;
-    color: white;
-    background-color: #292A73;
+    color: black;
+    background-color: white;
     display: flex;
     margin-bottom: 2%;
+    border-radius: 1em;
 }
 
 .comment_cell_left {
     width: 20%;
-    margin: 1%;
+    margin: 3% 2% 2% 2%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 .comment_cell_left > img {
-    display: block;
-    height: 20vh;
+    height: 10vh;
     width: auto;
 }
 
@@ -251,6 +253,7 @@ textarea {
     word-wrap: break-word;
     display: flex;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .comment_cell_right p {
@@ -267,4 +270,66 @@ textarea {
 .date_posted a {
     color: red;
     margin-right: 20px;
+}
+
+
+/* ===== PROFILE ===== */
+
+.profile-cell {
+    color: white;
+    background-color: #3E4491;
+    margin-top: 5em;
+    padding: 1em;
+    border-radius: 1em;
+    width: 80%;
+}
+
+.horizontal-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-picture {
+    width: 25rem;
+    padding-right: 1em;
+}
+
+.profile-picture img {
+    margin-top: 1em;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 500px;
+}
+
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+}
+
+.profile-form > label {
+    margin-bottom: 0.5em;
+}
+
+.profile-form > input{
+    margin-bottom: 1.5em;
+    border-radius: 1em;
+    border: none;
+    padding: 0.5em 0.5em 0.5em 1em;
+}
+
+#profile_picture {
+    padding: 0px;
+    border-radius: 0px;
+}
+
+.profile-update {
+    border: none;
+}
+
+.profile-update:hover {
+    cursor: pointer;
 }

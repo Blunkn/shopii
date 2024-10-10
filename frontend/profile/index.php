@@ -165,115 +165,70 @@ $con->close();
     <?php include "../navbar.php"; ?>
 
     <div class="container">
-        <h1 style="color:white">Profile</h1>
-        <div class="profile_cell">
-            <div class="profile-picture">
-                <?php
-                if (!empty($profilepic)) {
-                    // for HTML elements, path can be from document root (/)
-                    echo '<img src="/images/user_profiles/' . $profilepic . '" alt="Profile Picture">';
-                } else {
-                    echo '<img src="/images/user_profiles/profile.jpg" alt="Default Profile Picture">';
-                }
-                ?>
+        <div class="profile-cell">
+            <h1>My Profile</h1><hr>
+            <div class="horizontal-container">
+                <div class="profile-picture">
+                    <span>Profile Picture:</span>
+                    <?php
+                    if (!empty($profilepic)) {
+                        // for HTML elements, path can be from document root (/)
+                        echo '<img src="/images/user_profiles/' . $profilepic . '" alt="Profile Picture">';
+                    } else {
+                        echo '<img src="/images/profile-user.png" alt="Default Profile Picture">';
+                    }
+                    ?>
+                </div>
+                <form class="profile-form" method="POST" action="." enctype="multipart/form-data">
+                    <label for="username">Username:
+                        <?php
+                        if (!empty($updateUsername)) {
+                            echo '<span class="success">' . $updateUsername . '</span>';
+                        }
+                        ?>
+                    </label>
+                    <input type="text" id="username" name="username" value="<?php echo $username; ?>">
+
+                    <label for="password"> Change Password:
+                        <?php
+                        if (!empty($updatePassword)) {
+                            echo '<span class="success">' . $updatePassword . '</span>';
+                        }
+                        ?>
+                    </label>
+                    <input type="password" id="password" name="password" placeholder="New Password">
+
+                    <label for="email">Email:
+                        <?php
+                        if (!empty($updateEmail)) {
+                            echo '<span class="success">' . $updateEmail . '</span>';
+                        }
+                        ?>
+                    </label>
+                    <input type="email" id="email" name="email" value="<?php echo $email; ?>">
+                    
+                    <label for="profile_picture">Profile Picture:
+                        <?php
+                        if (!empty($updatePic)) {
+                            echo '<span class="success">' . $updatePic . '</span>';
+                        }
+                        ?>
+                    </label>
+                    <input type="file" id="profile_picture" name="profile_picture">
+                    
+                    <label for="oldPassword"> Password verification: </label>
+                    <input type="password" id="oldPassword" name="oldPassword" placeholder="Old Password" required>
+
+                    <button class="profile_update" type="submit">Update Profile</button>
+                                    
+                </form>
             </div>
-            <form class="profile_form" method="POST" action="."
-                enctype="multipart/form-data">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label for="username">Username:
-                                        <?php
-                                        if (!empty($updateUsername)) {
-                                            echo '<span align="center" class="success">' . $updateUsername . '</span>';
-                                        }
-                                        ?>
-                                    </label>
-                                    <br>
-                                    <input style="border-radius: 7px;" type="text" id="username" name="username"
-                                        value="<?php echo $username; ?>">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label for="password"> Change Password:
-                                        <?php
-                                        if (!empty($updatePassword)) {
-                                            echo '<span align="center" class="success">' . $updatePassword . '</span>';
-                                        }
-                                        ?>
-                                    </label>
-                                    <br>
-                                    <input style="border-radius: 7px;" type="password" id="password" name="password"
-                                        placeholder="New Password">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label for="email">Email:
-                                        <?php
-                                        if (!empty($updateEmail)) {
-                                            echo '<span align="center" class="success">' . $updateEmail . '</span>';
-                                        }
-                                        ?>
-                                    </label>
-                                    <br>
-                                    <input style="border-radius: 7px;" type="email" id="email" name="email"
-                                        value="<?php echo $email; ?>">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label for="profile_picture">Profile Picture:
-                                        <?php
-                                        if (!empty($updatePic)) {
-                                            echo '<span align="center" class="success">' . $updatePic . '</span>';
-                                        }
-                                        ?>
-                                    </label>
-                                    <br>
-                                    <input type="file" id="profile_picture" name="profile_picture">
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <label for="oldPassword"> Password verification: </label>
-                                    <br>
-                                    <input style="border-radius: 7px;" type="password" id="oldPassword"
-                                        name="oldPassword" placeholder="Old Password" required>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div>
-                                    <button class="profile_update" type="submit">Update Profile</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br>
-
         </div>
-        </form>
-
-    </div>
-    <?php
-    if (!empty($errorMsg)) {
-        echo '<p align="center" class="success">' . $errorMsg . '</p>';
-    }
-    ?>
+        <?php
+        if (!empty($errorMsg)) {
+            echo '<p align="center" class="success">' . $errorMsg . '</p>';
+        }
+        ?>
     </div>
 </body>
 
