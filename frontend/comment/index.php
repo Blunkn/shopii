@@ -35,18 +35,6 @@ session_start();
             $query->bind_result($comment_id, $user_id, $comment, $post_date, $username, $profilepic);
             $query->store_result();
 
-        echo '<div class="commentsection">';
-
-        // comments section
-        while ($query->fetch()) {
-            echo '<div class="comment">';
-            echo '<h4>' . htmlspecialchars($username) . '</h4>';
-            echo '<p>' . htmlspecialchars($comment_text) . '</p>';
-            echo '<time>' . date('F j, Y, g:i a', strtotime($created_at)) . '</time>';
-            echo '</div>';
-        }
-
-        echo '<div class="commentscontainer">';
             echo '<div class="column-container"><h1>Previous Comments<hr></h1>';
 
             while ($query->fetch()) {
