@@ -146,8 +146,16 @@ include "./sql_con.php";
 
                 // Add click event listener to the "Add to Cart" button
                 addToCartButton.addEventListener("click", function() {
-                    $no = "There is no cart feature. This is a fake shopping app, so I didn't bother. Sowwy :<"
-                    <?php echo "<script type='text/javascript'>alert('$no');</script>";?>
+                if (isAdmin) {
+                    location.href = "/admin/manage";
+                } else {
+                    <?php if (isset($_SESSION["user_id"])) { ?>
+                        location.href = "/cart/addtoCart.php?product_id=" + productId;
+                    <?php } else { ?>
+                        alert("Please log in before adding to cart.");
+                        location.href = "/login/";
+                    <?php } ?>
+                }
                 });
 
                 // Display the modal
