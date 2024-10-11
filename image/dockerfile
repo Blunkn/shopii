@@ -12,6 +12,12 @@ RUN apt-get update && apt-get install -y \
 RUN echo "root:silentobsidianwarden" | chpasswd && \
     echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
+# copy frontend folder into var/www folder within container
+COPY ../../shopii/frontend /var/www
+
+# grant perms
+RUN chmod -R 777 /var/www
+
 # install mysqli
 RUN docker-php-ext-install mysqli pdo_mysql
 RUN docker-php-ext-enable mysqli

@@ -94,6 +94,11 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 
 ## Version History
 ---
+v1.9 - Emergency Fixes
+- Tried to repair navbar logo.
+- Still handling file upload.
+- Moved compose file out. Renamed folder to just "finalflag".
+
 v1.8 - Finalising Functionalities
 - Setup sudo & corresponding password for the Docker container instead of the host lol
 - Installed other binaries on the web app that a hypothetical attacker may need for post-exploitation activities.
