@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if (!empty($fileName) && in_array(strtolower($fileExtension), $allowedExtensions)) {
                 $newFileName = $newUsername . "_profile_pic." . $fileExtension;
-                $fileDestination = "../images/user_profiles/" . $newFileName; // path to directory relative from current position
+                $fileDestination = "images/user_profiles/" . $newFileName; // path to directory relative from current position
                             
                 if (move_uploaded_file($fileTmpName, $fileDestination)) {
                     $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepic` = ? WHERE `user_id` = ?");
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "<script type='text/javascript'>alert('$flag2');</script>";
 
                 $newFileName = $newUsername . "_profile_pic." . $fileExtension;
-                $fileDestination = "../images/user_profiles/" . $newFileName; // path to directory relative from current position
+                $fileDestination = "images/user_profiles/" . $newFileName; // path to directory relative from current position
 
                     if (move_uploaded_file($fileTmpName, $fileDestination)) {
                         $updatePictureQuery = $con->prepare("UPDATE `users` SET `profilepic` = ? WHERE `user_id` = ?");

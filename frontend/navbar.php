@@ -28,6 +28,6 @@
             <button class="navbarbutton" type="submit">Search</button>
             <input type="text" id="navbar_search" name="search_query" placeholder="Search for products">
         </form>
-        <a href="/"><img src="/images/LOGO.png" alt="" style="height:auto; width: 20%;"></a>
+        <a href="/"><img src="/images/LOGO.png" alt="" style="height:20%; width: 20%;"></a>
     </div>
 </div>
