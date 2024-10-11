@@ -1,22 +1,6 @@
 FROM php:8.2.4-apache
 
-# update system + install tools
-RUN apt-get update && apt-get install -y \
-    sudo \
-    net-tools \
-    iputils-ping \
-    traceroute \
-    netcat
 
-# set root + set password for it
-RUN echo "root:silentobsidianwarden" | chpasswd && \
-    echo "root ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-# copy frontend folder into var/www folder within container
-COPY ../../shopii/frontend /var/www
-
-# grant perms
-RUN chmod -R 777 /var/www
 
 # install mysqli
 RUN docker-php-ext-install mysqli pdo_mysql
