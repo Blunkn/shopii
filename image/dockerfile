@@ -6,20 +6,23 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     iputils-ping \
     traceroute \
-    netcat
+    netcat \
+    bash
 
 # set root + set password for it
 RUN echo "root:silentobsidianwarden" | chpasswd
 
 # copy frontend folder into var/www folder within container
-COPY ../../shopii/frontend /var/www
+COPY ../image /var/www/html
 
 # grant perms
-RUN chmod -R 777 /var/www
+RUN chmod -R 777 /var/www/html
 
 # install mysqli
 RUN docker-php-ext-install mysqli pdo_mysql
 RUN docker-php-ext-enable mysqli
 
+USER root
+RUN exec /bin/bash
 RUN chown -R www-data:www-data /var/www
 USER www-data
