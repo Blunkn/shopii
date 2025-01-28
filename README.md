@@ -7,7 +7,7 @@ Group project for Singapore Institute of Technology's ICT2212 - Ethical Hacking 
 
 Special thanks to jason_kool for advice and permission to model our box off his Websafe repository.
 
-## Version 1.8
+## Version 2.0
 ---
 The Shopii Web App uses Docker and a .yaml script to deploy 3 containers; a backend database, a debugging interface, and a frontend web server.
 
@@ -110,6 +110,7 @@ sudo docker exec <container name> chown -R www-data:www-data /var/www
 - N/A
 
 ## Credits
+---
 - itsGY - Frontend web page design
 - jason-kool - Forking of web server container
 - Firekills10 - Additional testing
