@@ -96,14 +96,24 @@ PHPMyAdmin Interface: 127.0.0.1:8001
 ---
 - A pop-up with no product image will appear every time the home page is queried. This pop-up should only appear if the user clicks on a product, not out of nowhere on its own.
 - File upload vulnerability is impossible without inputting the following commands after startup:
-```
+"
 sudo docker exec <container name> /bin/bash
 sudo docker exec <container name> chown -R www-data:www-data /var/www
-```
+"
 - The Cart and Purchase features do not exist.
 - The Shopii logo is too large in scale.
 - Any profile changes require a new password. Individual features of a user profile should be changed without needing a password change or verification.
 - IP needs to be manually queried. Domain mapping does not work.
+
+## Roadmap
+---
+- N/A
+
+## Credits
+- itsGY - Frontend web page design
+- jason-kool - Forking of web server container
+- Firekills10 - Additional testing
+- PockyFtw, crazycodf, botjeremy, NigelLeeChengKae - Non-technical project aspect handling
 
 ## Version History
 ---
